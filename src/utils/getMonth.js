@@ -1,5 +1,19 @@
 export const getMonth = () => {
-    const date = new Date()
-    const month = date.getMonth() <10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
-    return month
-}
+  const date = new Date();
+  const day = date.getDay();
+  let month;
+
+  switch (day) {
+    case day < 15:
+      month =
+        date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
+      break;
+
+    default:
+        month =
+        date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() +1;
+      break;
+  }
+
+  return month;
+};
