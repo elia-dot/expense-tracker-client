@@ -4,7 +4,7 @@ export const getMonth = () => {
   let month;
 
   switch (day) {
-    case day < 15:
+    case day < 10:
       month =
         date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
       break;
