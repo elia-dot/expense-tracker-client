@@ -78,7 +78,7 @@ const EditCard = ({ cardDetails, setCardDetails }) => {
   };
 
   const handleDelete = async () => {
-    await mutate(credit);
+    await mutate(id);
     queryClient.invalidateQueries("cards");
     setCardDetails("");
   };

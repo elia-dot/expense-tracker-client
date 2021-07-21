@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { MdModeEdit } from "react-icons/md";
+import { AiOutlineClose } from "react-icons/ai";
 import { addCard, getCards } from "../api";
 import { AiFillCaretDown } from "react-icons/ai";
 import EditCard from "./EditCard";
@@ -94,8 +94,9 @@ const IconContainer = styled.div`
   width: 10%;
   display: grid;
   place-items: center;
-  font-size: 1.2em;
-  color: #8080ff;
+  img {
+    width: 70%;
+  }
 `;
 
 const CardNumber = styled.h4``;
@@ -141,6 +142,10 @@ const Modal = ({ setShowModel }) => {
   return (
     <ModalBg>
       <ModalContainer>
+        <AiOutlineClose
+          style={{ position: "absolute", top: "10px" }}
+          onClick={() => setShowModel(false)}
+        />
         {cardDetails && (
           <EditCard
             cardDetails={cardDetails}
@@ -200,7 +205,12 @@ const Modal = ({ setShowModel }) => {
             data.data.map((card) => (
               <CardWraper key={card._id}>
                 <IconContainer id={card._id} onClick={edit}>
-                  <MdModeEdit id={card._id} data-number={card.number} />
+                  <img
+                    src="/images/edit.png"
+                    id={card._id}
+                    data-number={card.number}
+                    alt="edit"
+                  />
                 </IconContainer>
                 <CardContainer>
                   <CardNumber>{card.number}</CardNumber>
